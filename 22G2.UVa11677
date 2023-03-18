@@ -1,0 +1,38 @@
+#include <iostream>
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int h1,m1,h2,m2;
+    while(cin >> h1)
+    {
+        cin >> m1;
+        cin >> h2;
+        cin >> m2;
+        if(h1==0&&m1==0&&h2==0&&m2==0)
+        {
+            break;
+        }
+        if(h2<h1)
+        {
+            int a=(24-h1)*60-m1;
+            int b=h2*60+m2;
+            cout << a+b << endl;
+        }
+        else if(h2==h1&&m1>m2)
+        {
+            int a=(24-h1)*60-m1;
+            int b=h2*60+m2;
+            cout << a+b << endl;
+        }
+        else
+        {
+            int a=h1*60+m1;
+            int b=h2*60+m2;
+            cout << b-a << endl;
+        }
+    }
+    return 0;
+}
