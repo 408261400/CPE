@@ -1,0 +1,81 @@
+#include <iostream>
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(){
+  int n;
+  cin >> n;
+  for(int i=0;i<n;i++)
+  {
+  	int num,data;
+  	cin >> num;
+  	int b[num];
+
+  	vector <int> c;
+  	c.clear();
+  	for(int j=0;j<num;j++)
+  	{
+  		cin >> data;
+  		b[j]=data;
+  	}
+  	while(1)
+  	{
+  		int temp=b[0];
+  		int start=0;
+  		for(int k=0;k<num-1;k++)
+  		{
+  			if(b[k]==0)
+  			{
+  				start++;
+  			}
+  			b[k]=abs(b[k]-b[k+1]);
+  			c.push_back(b[k]);
+  		}
+  		if(b[num-1]==0)
+  		{
+  			start++;
+  			if(start==num)
+            {
+                cout << "ZERO" << endl;
+                break;
+            }
+  		}
+  		b[num-1]=abs(b[num-1]-temp);
+  		c.push_back(b[num-1]);
+        /*for(int k=0;k<c.size()-num;k++)
+        {
+            cout << c[k] << " ";
+        }
+        cout << endl;*/
+        int ans=0;
+        for(int k=0;k<c.size()-num;k++)
+        {
+            if(k%num==0)
+            {
+                int y=0;
+                while(c[k+y]==b[y])
+                {
+                    y++;
+                    if(y==num-1)
+                    {
+                        ans=1;
+                        break;
+                    }
+                }
+            }
+            if(ans==1)
+            {
+                cout << "LOOP" << endl;
+                break;
+            }
+        }
+        if(ans==1)
+        {
+            break;
+        }
+  	}
+
+  }
+  return 0;
+}
